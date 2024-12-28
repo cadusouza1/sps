@@ -5,7 +5,7 @@ def solve_linear(a: float, b: float) -> float | None:
     if a == 0:
         return None
 
-    return b / a
+    return -b / a
 
 
 def solve_quadraric(a: float, b: float, c: float) -> tuple[float, float] | None:
