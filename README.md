@@ -37,7 +37,7 @@ Run the script with the coefficients:
 - Solving a linear equation:
 
   ```bash
-  python script.py 2 -4
+  python sps.py 2 -4
   ```
 
   Output:
@@ -49,7 +49,7 @@ Run the script with the coefficients:
 - Solving a quadratic equation:
 
   ```bash
-  python script.py 1 -3 2
+  python sps.py 1 -3 2
   ```
 
   Output:
