@@ -7,7 +7,7 @@ A simple command-line tool to solve linear and quadratic equations.
 Clone the repository:
 
 ```bash
-git clone https://github.com/cadusouza1/polynomial-solver.git
+git clone https://github.com/cadusouza1/sps.git
 ```
 
 Navigate to the project directory:
