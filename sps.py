@@ -1,51 +1,43 @@
 import sys
 
-
-def solve_linear(a: float, b: float) -> float | None:
-    if a == 0:
-        return None
-
-    return -b / a
+from solver import solve_linear, solve_quadraric
 
 
-def solve_quadraric(a: float, b: float, c: float) -> tuple[float, float] | None:
-    if a == 0:
-        return None
+def linear_equation(args: list[str]) -> None:
+    root = solve_linear(float(args[0]), float(args[1]))
 
-    delta = b**2 - 4 * a * c
-    if delta < 0:
-        return None
+    if not root:
+        print("Equation has no root")
+        return
 
-    x1 = (-b + delta**0.5) / 2 * a
-    x2 = (-b - delta**0.5) / 2 * a
+    print(f"Root: {root}")
 
-    return x1, x2
+
+def quadratic_equation(args: list[str]) -> None:
+    roots = solve_quadraric(float(args[0]), float(args[1]), float(args[2]))
+
+    if not roots:
+        print("Equation has no real roots")
+        return
+
+    print(f"Roots: {' '.join(map(str, roots))}")
 
 
 def main() -> None:
-    root = None
+    equation_solvers = {3: linear_equation, 4: quadratic_equation}
 
-    if len(sys.argv) > 1:
-        if len(sys.argv) == 2:
-            print("Not a polynomial")
-            return
-        if len(sys.argv) == 3:
-            root = solve_linear(float(sys.argv[1]), float(sys.argv[2]))
-        elif len(sys.argv) == 4:
-            root = solve_quadraric(
-                float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3])
-            )
-        else:
-            print(
-                f"Polynomials of degree {len(sys.argv) - 1} are not yes suported"
-            )
-            return
+    if len(sys.argv) == 1:
+        return
 
-        if not root:
-            print("Polynomial has no real solution")
-            return
+    if len(sys.argv) == 2:
+        print("Not a polynomial")
+        return
 
-        print(f"Roots: {root}")
+    if len(sys.argv) > 4:
+        print(f"Polynomials of degree {len(sys.argv) - 2} are not yet suported")
+        return
+
+    equation_solvers[len(sys.argv)](sys.argv[1:])
 
 
 if __name__ == "__main__":
